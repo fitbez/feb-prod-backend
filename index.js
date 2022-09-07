@@ -1,9 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const mongoDbUri =
-  "mongodb+srv://mongo:Password1@cluster0.siy14yc.mongodb.net/?retryWrites=true&w=majority";
-
 const app = express();
 
 mongoose
