@@ -15,6 +15,40 @@ router.post("/addproduct", async (req, res) => {
   }
 });
 
-module.exports = router;
+/* GET ALL PRODUCTS */
+router.get("/allproducts", async (res) => {
+  try {
+    const result = await Product.find({});
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
-/* GET PRODUCT */
+/* UPDATE A PRODUCT */
+router.put("/:id", async (req, res) => {
+  try {
+    const updatedProduct = await Product.findOneAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).json(updatedProduct);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+/* DELETE A PRODUCT */
+router.delete("/:id", async (req, res) => {
+  try {
+    await Product.findOneAndDelete(req.params.id);
+    res.status(200).json("The product has been deleted...");
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+module.exports = router;

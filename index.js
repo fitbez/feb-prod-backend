@@ -19,6 +19,7 @@ mongoose
 app.use(express.json());
 app.use("/api/products", productRoute);
 app.use(cors({ origin: "*" }));
+
 /** setting up server */
 app.listen(5000, () => {
   console.log("Our server is up and running on port 5000");
