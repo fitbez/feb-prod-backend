@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const productRoute = require("./routes/product");
+const userRoute = require("./routes/auth");
 const cors = require("cors");
 
 const app = express();
@@ -17,8 +18,9 @@ mongoose
   });
 
 app.use(express.json());
-app.use("/api/products", productRoute);
 app.use(cors({ origin: "*" }));
+app.use("/api/products", productRoute);
+app.use("/api/user", userRoute);
 
 /** setting up server */
 app.listen(5000, () => {

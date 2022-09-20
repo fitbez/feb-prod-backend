@@ -16,7 +16,7 @@ router.post("/addproduct", async (req, res) => {
 });
 
 /* GET ALL PRODUCTS */
-router.get("/allproducts", async (res) => {
+router.get("/allproducts", async (req, res) => {
   try {
     const result = await Product.find({});
     res.status(200).json(result);
